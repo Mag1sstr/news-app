@@ -12,8 +12,10 @@ export default function Main() {
   useEffect(() => {
     async function fetchNews() {
       try {
+        setIsLoading(true);
         const response = await getNews();
         setNews(response.news);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -28,7 +30,11 @@ export default function Main() {
         <Skeleton type={"banner"} count={1} />
       )}
 
-      <NewsList news={news} />
+      {!isLoading ? (
+        <NewsList news={news} />
+      ) : (
+        <Skeleton type={"item"} count={10} />
+      )}
     </main>
   );
 }
