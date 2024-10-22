@@ -1,11 +1,21 @@
 import Skeleton from "../../components/Skeleton/Skeleton";
+import { DirectionType, SkeletonType } from "../../interfaces";
 
-export default function withSkeleton(Component, type, count, direction) {
-  return function WithSkeleton(props) {
+interface Props {
+  isLoading: boolean;
+}
+
+export default function withSkeleton<P extends object>(
+  Component: React.ComponentType<P>,
+  type?: SkeletonType,
+  count?: number,
+  direction?: DirectionType
+) {
+  return function WithSkeleton(props: Props & P) {
     const { isLoading, ...restProps } = props;
     if (isLoading) {
       return <Skeleton type={type} count={count} direction={direction} />;
     }
-    return <Component {...restProps} />;
+    return <Component {...(restProps as P)} />;
   };
 }

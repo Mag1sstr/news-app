@@ -1,6 +1,11 @@
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
+import { INews } from "../../interfaces";
 import styles from "./styles.module.css";
-export default function NewsItem({ item }) {
+
+interface Props {
+  item: INews;
+}
+export default function NewsItem({ item }: Props) {
   return (
     <li className={styles.item}>
       <div

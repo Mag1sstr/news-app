@@ -1,13 +1,19 @@
 import React, { useRef } from "react";
 import styles from "./styles.module.css";
 
-export default function Slider({ children }) {
-  const sliderRef = useRef(null);
+interface Props {
+  children: React.ReactElement;
+}
+
+export default function Slider({ children }: Props) {
+  const sliderRef = useRef<HTMLElement | null>(null);
 
   function scrollLeft() {
+    if (!sliderRef.current) return;
     sliderRef.current.scrollLeft -= 150;
   }
   function scrollRight() {
+    if (!sliderRef.current) return;
     sliderRef.current.scrollLeft += 150;
   }
   return (
