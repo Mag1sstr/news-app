@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+interface FetchFunction<P, T> {
+  (params?: P): Promise<T>;
+}
+
 export function useFetch(fetchFunction, params) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
