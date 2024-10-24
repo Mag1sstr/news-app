@@ -1,3 +1,4 @@
+import { useTheme } from "../../context/ThemeContext";
 import { formatDate } from "../../helpers/formatDate";
 import { IPaginationProps } from "../../interfaces";
 import styles from "./styles.module.css";
@@ -9,8 +10,9 @@ export default function Pagination({
   handlePreviousPage,
   handlePageClick,
 }: IPaginationProps) {
+  const { isDark } = useTheme();
   return (
-    <div className={styles.pagination}>
+    <div className={`${styles.pagination} ${isDark ? styles.dark : null}`}>
       <button onClick={handlePreviousPage} className={styles.arrow}>
         {"<"}
       </button>

@@ -1,9 +1,14 @@
 .header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 12px 24px;
   background: #fff;
   border-bottom: 1px solid #f2f4f5;
+}
+.info {
+  display: flex;
   flex-direction: column;
   gap: 12px;
 }
@@ -12,4 +17,34 @@
 }
 .date {
   font-size: 16px;
+}
+.dark {
+  background-color: #23272f;
+}
+.light {
+  background-color: #fff;
+}
+.button {
+  display: flex;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.circle {
+  margin-left: 3px;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+.button.active .circle {
+  background-color: #fff;
+  margin-left: 35px;
+}
+.active {
+  border-color: #fff;
 }

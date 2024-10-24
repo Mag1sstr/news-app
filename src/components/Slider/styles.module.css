@@ -10,3 +10,7 @@
   background: #fff;
   cursor: pointer;
 }
+.slider.dark .arrow {
+  background: #23272f;
+  color: #fff;
+}

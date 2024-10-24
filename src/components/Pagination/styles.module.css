@@ -23,6 +23,15 @@
 }
 .arrow {
   border: none;
+  /* color: #000; */
   background-color: white;
   cursor: pointer;
+}
+.pagination.dark .pageNumber {
+  background-color: #23272f;
+  color: #fff;
+}
+.pagination.dark .arrow {
+  color: #fff;
+  background-color: #23272f;
 }
