@@ -4,6 +4,7 @@ import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { useFetch } from "../../helpers/hooks/useFetch";
 import { useFilters } from "../../helpers/hooks/useFilters";
 import { NewsApiResponse, ParamsType } from "../../interfaces";
+import { useGetNewsQuery } from "../../store/services/newsApi";
 import NewsFilters from "../NewsFilters/NewsFilters";
 import NewsList from "../NewsList/NewsList";
 
@@ -20,7 +21,11 @@ export default function NewsByFilters() {
 
   const debounceKeywords = useDebounce(filters.keywords, 1500);
 
-  const { data, isLoading } = useFetch<NewsApiResponse, ParamsType>(getNews, {
+  // const { data, isLoading } = useFetch<NewsApiResponse, ParamsType>(getNews, {
+  //   ...filters,
+  //   keywords: debounceKeywords,
+  // });
+  const { data, isLoading } = useGetNewsQuery({
     ...filters,
     keywords: debounceKeywords,
   });
