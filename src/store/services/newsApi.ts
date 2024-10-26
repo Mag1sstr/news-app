@@ -1,5 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { NewsApiResponse, ParamsType } from "../../interfaces";
+import {
+  CategoriesApiResponse,
+  NewsApiResponse,
+  ParamsType,
+} from "../../interfaces";
 
 const BASE_URL = import.meta.env.VITE_NEWS_BASE_API_URL;
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
@@ -9,6 +13,7 @@ export const newsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getNews: builder.query<NewsApiResponse, ParamsType>({
+      keepUnusedDataFor: 0,
       query: (params) => {
         const {
           page_number = 1,
@@ -38,7 +43,18 @@ export const newsApi = createApi({
         };
       },
     }),
+    getCategories: builder.query<CategoriesApiResponse, null>({
+      query: () => {
+        return {
+          url: "available/categories",
+          params: {
+            apiKey: API_KEY,
+          },
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetNewsQuery, useGetLatesNewsQuery } = newsApi;
+export const { useGetNewsQuery, useGetLatesNewsQuery, useGetCategoriesQuery } =
+  newsApi;
