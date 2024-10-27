@@ -9,8 +9,8 @@ interface Props {
 function BannersList({ banners }: Props) {
   return (
     <ul className={styles.banners}>
-      {banners?.map((banner) => {
-        return <NewsBanner key={banner.id} item={banner} />;
+      {banners?.map((banner, index) => {
+        return <NewsBanner key={banner.id} item={banner} index={index} />;
       })}
     </ul>
   );
