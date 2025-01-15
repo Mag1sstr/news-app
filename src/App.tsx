@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "./components/Header/Header";
+// import Header from "./components/Header/Header";
 import { useTheme } from "./context/ThemeContext";
 import Main from "./pages/Main/Main";
 import NewsPage from "./components/NewsPage/NewsPage";
+import Header from "./components/Header/Header";
 
 function App() {
   const { isDark } = useTheme();
